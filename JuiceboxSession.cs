@@ -163,7 +163,13 @@ public sealed class JuiceboxSession : IDisposable
 			_webSocket = new WebSocket();
 			await _webSocket.Connect( negotiateResponse.Endpoint );
 			Log.Info( $"Connected to Juicebox session websocket" );
-			_webSocket.OnDisconnected += ( status, reason ) => Log.Error( $"Lost connection to the Juicebox session websocket ({status}, {reason})" );
+			_webSocket.OnDisconnected += ( status, reason ) =>
+            {
+                if (reason != "Disposing")
+                {
+                    Log.Error($"Lost connection to the Juicebox session websocket ({status}, {reason})");
+                }
+            };
 			_webSocket.OnMessageReceived += HandleWebSocketMessage;
 		}
 		catch ( Exception e )

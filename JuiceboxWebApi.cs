@@ -73,7 +73,7 @@ internal static class JuiceboxWebApi
 	private static Task<HttpResponseMessage> PostAsJson<T>( string uri, T payload )
 	{
 		var content = Http.CreateJsonContent( payload );
-		return Http.RequestAsync( "POST", uri, content );
+		return Http.RequestAsync( uri, "POST", content );
 	}
 
 	private static async Task<T> ReadFromJson<T>( HttpResponseMessage response )

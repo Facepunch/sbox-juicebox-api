@@ -62,8 +62,12 @@ public sealed class JuiceboxSession : IDisposable
 			}
 		}
 
-		_cts.Cancel();
-		_cts.Dispose();
+        if ( !_cts.IsCancellationRequested )
+        {
+            _cts.Cancel();
+            _cts.Dispose();
+        }
+
 		_players.Clear();
 		_playerDisplays.Clear();
 		_defaultDisplay = null;
@@ -165,7 +169,7 @@ public sealed class JuiceboxSession : IDisposable
 			Log.Info( $"Connected to Juicebox session websocket" );
 			_webSocket.OnDisconnected += ( status, reason ) =>
             {
-                if (reason != "Disposing")
+                if (reason != "Disposing" && reason != "Disposed")
                 {
                     Log.Error($"Lost connection to the Juicebox session websocket ({status}, {reason})");
                 }

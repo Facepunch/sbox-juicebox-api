@@ -2,6 +2,8 @@
 
 This is the [S&box](https://sbox.facepunch.com/) implementation of the Juicebox API to create party game sessions on [juicebox.facepunch.com](https://juicebox.facepunch.com).
 
+There is a [designer UI](https://juicebox.facepunch.com/designer/) available to help make building Juicebox games easier.
+
 For a sample game using this library, see [Juicebox](https://github.com/Facepunch/sbox-juicebox).
 
 Feel free to report issues with the [juicebox.facepunch.com](https://juicebox.facepunch.com) website in this repo.
@@ -37,9 +39,7 @@ await session.Display( new JuiceboxDisplay
 } );
 ```
 
-This would display "Hello World" for all players.
-
-TODO: Make a dev web page which allows designing and previewing the display models
+This would display "Hello World" for all players. There is a [designer UI](https://juicebox.facepunch.com/designer/) available to help you build displays with a live preview.
 
 The session can be closed by disposing it. This is important because it will inform all players on the web client that the session is no longer active - and it cleans up resources in S&box:
 ```cs

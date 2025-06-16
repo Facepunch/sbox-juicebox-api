@@ -16,3 +16,6 @@ code/Properties/*
 *.*_c
 *.los
 *.vpk
+
+.idea/
+.sbox/
